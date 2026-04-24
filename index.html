@@ -2,7 +2,7 @@
 <html lang="vi"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Kiểm Tra Đỉnh Cao V5.0</title>
+    <title>Hệ Thống Kiểm Tra Offline - Navigation Fixed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -27,30 +27,30 @@
             background-color: #eafaf1;
         }
         :root {
-            --bg-color: #fdf5c9; --text-color: #1a237e; --banner-grad-1: #1a237e; --banner-grad-2: #3949ab;
-            --card-header-bg: #e8eaf6; --card-header-text: #1a237e; --primary-btn: #1a237e; --primary-btn-hover: #000051;
-            --input-border: #c5cae9; --shadow-color: rgba(26, 35, 126, 0.4);
+            --bg-color: #ecfdf5; --text-color: #1463f6; --banner-grad-1: #1fa4fc; --banner-grad-2: #2ce0e0;
+            --card-header-bg: #d1fae5; --card-header-text: #16c0b2; --primary-btn: #056196; --primary-btn-hover: #199dbe;
+            --input-border: #a7f3d0; --shadow-color: rgba(35, 161, 239, 0.34); --accent-soft: #f0fdf4;
         }
 
-        /* Lớp 4 Theme (Toán/TV/Tiếng Anh) */
+        /* Lớp 4
+
+        /* Lớp 4 Theme - Xanh ngọc lục bảo */
         body.theme-g4 {
-            --bg-color: #e8f8f5; --text-color: #0e6251; --banner-grad-1: #1abc9c; --banner-grad-2: #48c9b0;
-            --card-header-bg: #d1f2eb; --card-header-text: #0e6251; --primary-btn: hsl(168, 76%, 42%); --primary-btn-hover: #16a085;
-            --input-border: #a3e4d7; --shadow-color: rgba(26, 188, 156, 0.4);
+            --bg-color: #e8f8f5; --text-color: #0f620e; --banner-grad-1: #1abc58; --banner-grad-2: #48c988;
+            --card-header-bg: #d1f2eb; --card-header-text: #0e625180; --primary-btn: hsl(153, 76%, 42%); --primary-btn-hover: #16a04b;
+            --input-border: #a7f3d0; --shadow-color: rgba(12, 236, 87, 0.375); --accent-soft: #f0fdf4;
         }
 
-        /* Lớp 5 Theme (Toán/TV/Tiếng Anh) */
-        body.theme-g5 {
+        /* Lớp 5 Theme - Tím vui nhộn, điểm nhấn xanh ngọc */
+       body.theme-g5 {
             --bg-color: #f4ecf7; --text-color: #4a235a; --banner-grad-1: #9b59b6; --banner-grad-2: #af7ac5;
             --card-header-bg: #e8daef; --card-header-text: #4a235a; --primary-btn: #9b59b6; --primary-btn-hover: #8e44ad;
             --input-border: #d2b4de; --shadow-color: rgba(155, 89, 182, 0.4);
         }
-        /* Tiếng Anh Theme (Dùng chung 4/5) */
-body.theme-en {
-    --bg-color: #f1f8e9; --text-color: #1b5e20; --banner-grad-1: #4caf50; --banner-grad-2: #81c784;
-    --card-header-bg: #e8f5e9; --card-header-text: #1b5e20; --primary-btn: #4caf50; --primary-btn-hover: #388e3c;
-    --input-border: #c8e6c9; --shadow-color: rgba(76, 175, 80, 0.4);
-}
+        /* Tiếng Anh không dùng theme riêng; nếu class cũ còn sót thì vẫn theo biến chung. */
+        body.theme-en { }
+
+        /* ================= CHẾ ĐỘ ADMIN
 
         /* ================= CHẾ ĐỘ ADMIN ================= */
         body.theme-admin {
@@ -147,6 +147,94 @@ body.theme-en {
         @keyframes insaneShake { 0% { transform: scale(1.5) translate(15px, 15px) rotate(5deg); filter: invert(0); } 25% { transform: scale(1.5) translate(-15px, -15px) rotate(-5deg); filter: invert(0); } 50% { transform: scale(1.8) translate(25px, -15px) rotate(10deg); filter: invert(1); } 75% { transform: scale(1.5) translate(-25px, 25px) rotate(-10deg); filter: invert(0); } 100% { transform: scale(1.5) translate(15px, -15px) rotate(5deg); filter: invert(0); } }
         @keyframes flashText { 0%, 100% { opacity: 1; color: white; transform: scale(1); } 50% { opacity: 1; color: yellow; transform: scale(1.2) rotate(-3deg); } }
 
+
+        /* ================= UX/UI V6 - SỐNG ĐỘNG, VUI NHỘN, AN TOÀN ================= */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(16, 185, 129, 0.16), transparent 28%),
+                radial-gradient(circle at 88% 12%, rgba(251, 191, 36, 0.13), transparent 26%),
+                radial-gradient(circle at 80% 86%, rgba(124, 58, 237, 0.10), transparent 28%);
+        }
+        .container { position: relative; }
+        .header-banner { position: relative; overflow: hidden; border: 2px solid rgba(255,255,255,0.45); }
+        .header-banner::after { content: "✨"; position: absolute; right: 22px; top: 12px; font-size: 2rem; opacity: .55; animation: sparkleFloat 2.8s infinite ease-in-out; }
+        @keyframes sparkleFloat { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(8px) rotate(10deg); } }
+        .card { border: 1px solid rgba(255,255,255,0.75); box-shadow: 0 16px 35px rgba(15, 23, 42, 0.08); overflow: hidden; }
+        .card:hover { transform: translateY(-1px); transition: transform .2s ease, box-shadow .2s ease; box-shadow: 0 18px 42px rgba(15, 23, 42, 0.11); }
+        .btn-custom, .btn-test { position: relative; overflow: hidden; }
+        .btn-custom::after, .btn-test::after { content: ""; position: absolute; inset: 0; transform: translateX(-120%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent); transition: transform .65s ease; }
+        .btn-custom:hover::after, .btn-test:hover::after { transform: translateX(120%); }
+        .btn-test::before { content: "📝"; display: block; font-size: 2rem; margin-bottom: 6px; }
+        .reading-passage { background: linear-gradient(180deg, #ffffff, var(--accent-soft, #f8fffb)) !important; border: 2px dashed var(--input-border) !important; }
+        .reading-passage .reading-body, .reading-passage .editable-text { line-height: 1.9; white-space: pre-wrap; }
+        body.theme-admin .reading-passage .reading-body[contenteditable="true"] { min-height: 180px; cursor: text !important; background: #fff !important; border: 2px dashed var(--primary-btn) !important; border-radius: 16px; padding: 16px; outline: none; }
+        body.theme-admin .reading-passage::before { content: "✍️ Admin: có thể sửa trực tiếp tiêu đề và đoạn văn tại đây"; display: inline-block; margin-bottom: 10px; padding: 6px 14px; border-radius: 999px; background: #fff7ed; color: #c2410c; font-weight: 800; font-size: .92rem; }
+        .admin-status-pill { position: fixed; left: 20px; bottom: 72px; z-index: 9998; background: #fff; color: var(--text-color); border: 2px solid var(--primary-btn); border-radius: 999px; padding: 8px 16px; font-weight: 900; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12); }
+        .danger-password-hint { font-weight: 800; color: #dc2626; }
+        @media (max-width: 576px) { .header-banner { padding: 22px 16px; } .btn-test { min-height: 118px; font-size: 1.45rem; } .card-body { padding: 1rem; } .jumpscare-monster { font-size: 13rem; } .mocking-text { font-size: 2rem; } }
+
+
+        /* ================= THANH ĐIỀU HƯỚNG NHỎ GÓC TRÁI - KHÔNG BỊ KHÓA NHẦM ================= */
+        .floating-nav-panel {
+            position: fixed;
+            left: 16px;
+            top: 16px;
+            z-index: 10050;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.86);
+            border: 2px solid rgba(255,255,255,0.72);
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .floating-nav-panel .nav-mini-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: none;
+            color: #fff;
+            background: linear-gradient(135deg, var(--banner-grad-1), var(--banner-grad-2));
+            box-shadow: 0 8px 18px var(--shadow-color);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: transform .18s ease, opacity .18s ease, filter .18s ease;
+            user-select: none;
+        }
+        .floating-nav-panel .nav-mini-btn:hover { transform: translateY(-2px) scale(1.05); filter: brightness(1.05); }
+        .floating-nav-panel .nav-mini-btn:active { transform: translateY(0) scale(.96); }
+        .floating-nav-panel .nav-mini-btn:disabled { opacity: .42; cursor: not-allowed; transform: none; filter: grayscale(25%); }
+        .floating-nav-panel .nav-state-label {
+            max-width: 130px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding: 0 7px 0 2px;
+            color: var(--text-color);
+            font-weight: 900;
+            font-size: .88rem;
+        }
+        body.theme-admin .floating-nav-panel {
+            border-color: rgba(231, 76, 60, .32);
+            box-shadow: 0 14px 34px rgba(231, 76, 60, .18);
+        }
+        @media (max-width: 576px) {
+            .floating-nav-panel { left: 8px; top: 8px; gap: 5px; padding: 6px; }
+            .floating-nav-panel .nav-mini-btn { width: 36px; height: 36px; font-size: .95rem; }
+            .floating-nav-panel .nav-state-label { display: none; }
+        }
+
     </style>
 </head>
 <body id="mainBody" class="">
@@ -164,6 +252,14 @@ body.theme-en {
     </button>
 
     <button id="floatingAdminBtn" onclick="promptAdmin()" class="btn btn-outline-secondary position-fixed bottom-0 end-0 m-4 rounded-circle shadow-lg d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; z-index: 9999; background: rgba(255,255,255,0.9); border-width: 2px;"><i class="fas fa-user-cog fs-3"></i></button>
+
+    <div id="floatingNavPanel" class="floating-nav-panel" data-nav-control="true" aria-label="Điều hướng nhanh">
+        <button id="navBackBtn" type="button" class="nav-mini-btn" data-nav-control="true" onclick="appNavBack()" title="Quay lại một bước"><i class="fas fa-arrow-left"></i></button>
+        <button id="navHomeBtn" type="button" class="nav-mini-btn" data-nav-control="true" onclick="appNavHome()" title="Về danh sách đề / Trang chủ"><i class="fas fa-house"></i></button>
+        <button id="navForwardBtn" type="button" class="nav-mini-btn" data-nav-control="true" onclick="appNavForward()" title="Đi tới bước tiếp theo"><i class="fas fa-arrow-right"></i></button>
+        <span id="navStateLabel" class="nav-state-label">Trang chủ</span>
+    </div>
+
 
     <div class="container mt-5 mb-5 position-relative" style="z-index: 10;">
         
@@ -187,7 +283,7 @@ body.theme-en {
                 <button class="btn-custom py-3 px-5 fs-4" onclick="showTestSelect('Tiếng Việt')">TIẾNG VIỆT</button>
                 <button class="btn-custom py-3 px-5 fs-4" onclick="showTestSelect('Tiếng Anh')">TIẾNG ANH</button>
             </div>
-            <button class="btn btn-light rounded-pill px-5 py-2 fw-bold" onclick="goHome()">Quay Lại</button>
+            <button class="btn btn-light rounded-pill px-5 py-2 fw-bold" data-nav-control="true" onclick="goHome()">Quay Lại</button>
         </div>
 
         <div id="view-test-select" class="hidden">
@@ -203,7 +299,7 @@ body.theme-en {
                 <div><button class="btn-custom btn-test" onclick="startExam(6)">ĐỀ 6</button></div>
             </div>
             <div class="text-center mt-5">
-                <button class="btn btn-light rounded-pill px-5 py-2 fw-bold" onclick="document.getElementById('view-test-select').classList.add('hidden'); document.getElementById('view-subject').classList.remove('hidden');">Quay Lại</button>
+                <button class="btn btn-light rounded-pill px-5 py-2 fw-bold" data-nav-control="true" onclick="showSubjectFromTestSelect()">Quay Lại</button>
             </div>
         </div>
 
@@ -211,7 +307,10 @@ body.theme-en {
             <div class="header-banner d-flex justify-content-between align-items-center flex-wrap" style="padding: 20px 30px;">
                 <h2 class="fw-bold mb-0 text-start" id="examHeaderTitle">Đề 2 - Tiếng Việt Lớp 5</h2>
                 <div class="mt-3 mt-md-0 d-flex gap-2">
-                    <button class="btn btn-light rounded-pill fw-bold text-danger" onclick="goHome()">Thoát (Lưu Tạm)</button>
+                    <button class="btn btn-light rounded-pill fw-bold text-danger" data-nav-control="true" onclick="goHome()">Thoát (Lưu Tạm)</button>
+                    <button class="btn btn-success rounded-pill fw-bold admin-only hidden ms-2 text-white shadow-sm" onclick="adminSaveCurrentExam()">
+                        <i class="fas fa-save"></i> Lưu đề này
+                    </button>
                     <button class="btn btn-warning rounded-pill fw-bold admin-only ms-2 text-dark shadow-sm hidden" onclick="exportExamHTML()">
                         <i class="fas fa-download"></i> Xuất Đề Thi Mới (Tải xuống)
                     </button>
@@ -326,8 +425,8 @@ body.theme-en {
                     <div class="card-header">Phần 1: Đọc Hiểu &amp; Trắc Nghiệm</div>
                     <div class="card-body">
                         <div class="bg-light p-4 rounded mb-4 shadow-sm border reading-passage">
-                            <h5 class="fw-bold text-center text-dark editable-text" contenteditable="false">CHIẾC ÁO<div><br></div></h5>
-                            <p class="editable-text text-dark mt-3" style="line-height: 1.8;" contenteditable="false"></p><div>&nbsp; &nbsp; &nbsp;Mùa đông đã tới, những cơn gió rét buốt rít liên hồi ngoài cửa sổ. Ngoài đường, ai&nbsp;<span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">cũng bước vội vàng để tránh cái lạnh đang làm cứng đờ đôi bàn tay. Những khuôn mặt&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">vui tươi, hớn hở biến đi đâu mất, thay vào đó là tái đi vì lạnh. Mùa rét năm nay, mẹ mua&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">cho An một chiếc áo khoác mới, vì áo cũ của cậu đa phần đã bị rách do sự hiếu động của&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">An. Khi nhận chiếc áo từ mẹ, An vùng vằng vì kiểu dáng và màu sắc của chiếc áo không&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">đúng ý thích của cậu. Về phòng, cậu ném chiếc áo xuống đất, cả ngày lầm lì không nói gì.</span></div><div><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);"><br></span></div><div>&nbsp; &nbsp; &nbsp;Chiều tối hôm đó, bố rủ An ra phố. Mặc dù trời đang rất lạnh nhưng An háo hức đi&nbsp;<span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">ngay. Sau khi mua đồ xong, bố chở An ra khu chợ, nơi các gian hàng bắt đầu thu dọn. Bố&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">chỉ cho An thấy những cậu bé không có nhà cửa, không có người thân, trên người chỉ có&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">một tấm áo mỏng manh đang co ro, tím tái. Trong khi mọi người đều về nhà quây quần&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">bên bữa tối ngon lành, bên ánh đèn ấm áp thì các cậu vẫn phải lang thang ở ngõ chợ, nhặt&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">nhạnh những thứ người ta đã bỏ đi.</span></div><div><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);"><br></span></div><div>&nbsp; &nbsp; &nbsp; Bất giác, An cảm thấy hối hận vô cùng. An nhớ lại ánh mắt buồn của mẹ khi cậu&nbsp;<span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">ném chiếc áo khoác xuống đất. Bố chỉ nhẹ nhàng: “Con có hiểu không? Cuộc đời này còn&nbsp;</span><span style="color: rgba(var(--bs-dark-rgb),var(--bs-text-opacity)); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">nhiều người thiệt thòi lắm. Hãy biết trân trọng thứ mà mình đang có.”</span></div><p></p>
+                            <h5 class="fw-bold text-center text-dark editable-text" contenteditable="false">CHIẾC ÁO</h5>
+                            <div class="editable-text reading-body text-dark mt-3" style="line-height: 1.9;" contenteditable="false">Mùa đông đã tới, những cơn gió rét buốt rít liên hồi ngoài cửa sổ. Ngoài đường, ai<br><br>cũng bước vội vàng để tránh cái lạnh đang làm cứng đờ đôi bàn tay. Những khuôn mặt<br><br>vui tươi, hớn hở biến đi đâu mất, thay vào đó là tái đi vì lạnh. Mùa rét năm nay, mẹ mua<br><br>cho An một chiếc áo khoác mới, vì áo cũ của cậu đa phần đã bị rách do sự hiếu động của<br><br>An. Khi nhận chiếc áo từ mẹ, An vùng vằng vì kiểu dáng và màu sắc của chiếc áo không<br><br>đúng ý thích của cậu. Về phòng, cậu ném chiếc áo xuống đất, cả ngày lầm lì không nói gì.<br><br>Chiều tối hôm đó, bố rủ An ra phố. Mặc dù trời đang rất lạnh nhưng An háo hức đi<br><br>ngay. Sau khi mua đồ xong, bố chở An ra khu chợ, nơi các gian hàng bắt đầu thu dọn. Bố<br><br>chỉ cho An thấy những cậu bé không có nhà cửa, không có người thân, trên người chỉ có<br><br>một tấm áo mỏng manh đang co ro, tím tái. Trong khi mọi người đều về nhà quây quần<br><br>bên bữa tối ngon lành, bên ánh đèn ấm áp thì các cậu vẫn phải lang thang ở ngõ chợ, nhặt<br><br>nhạnh những thứ người ta đã bỏ đi.<br><br>Bất giác, An cảm thấy hối hận vô cùng. An nhớ lại ánh mắt buồn của mẹ khi cậu<br><br>ném chiếc áo khoác xuống đất. Bố chỉ nhẹ nhàng: “Con có hiểu không? Cuộc đời này còn<br><br>nhiều người thiệt thòi lắm. Hãy biết trân trọng thứ mà mình đang có.”</div>
                         </div>
                         
                         <div class="mcq-block border-bottom pb-4" data-qid="tv1">
@@ -494,7 +593,11 @@ body.theme-en {
                         <p class="fw-bold editable-text text-dark fs-5 mb-4" contenteditable="false">Em hãy dùng chuột kéo các từ ở ô chữ nhật phía trên, thả vào đúng cột Danh từ, Động từ, Tính từ ở phía dưới nhé:</p>
                         
                         <div class="word-bank shadow-sm mb-4" id="mainWordBank" ondrop="drop(event)" ondragover="allowDrop(event)">
-                    
+                            <div class="draggable-word" id="w1" draggable="true" ondragstart="dragStart(event)" data-type="danh-tu">Ngôi trường</div>
+                            <div class="draggable-word" id="w2" draggable="true" ondragstart="dragStart(event)" data-type="dong-tu">Chạy nhảy</div>
+                            <div class="draggable-word" id="w3" draggable="true" ondragstart="dragStart(event)" data-type="tinh-tu">Đẹp đẽ</div>
+                            <div class="draggable-word" id="w4" draggable="true" ondragstart="dragStart(event)" data-type="danh-tu">Học sinh</div>
+                            <div class="draggable-word" id="w5" draggable="true" ondragstart="dragStart(event)" data-type="tinh-tu">Cao lớn</div>
                         <div class="draggable-word position-relative" id="w_new_114" draggable="true" data-type="danh-tu">
             <span class="editable-text" contenteditable="false">cơn gió</span>
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="cursor:pointer;" onclick="this.parentElement.remove()">X</span>
@@ -770,6 +873,7 @@ body.theme-en {
     let currentGrade = 0;
     let currentSubject = '';
     let currentTestId = '';
+    let currentTestNumber = 0;
     let isAdminMode = false;
     let scareTimeouts = []; 
     
@@ -778,9 +882,12 @@ body.theme-en {
     let pristineTvHTML = '';
     let pristineEnHTML = '';
     let testStates = {};
-    const STORAGE_KEY = 'DeThiOfflineV5::' + (location.pathname || 'offline');
+    const STORAGE_VERSION = 'V6_EMERALD_20260424';
+    const STORAGE_KEY = 'DeThiOffline::' + STORAGE_VERSION + '::' + (location.pathname || 'offline');
     let autoSaveTimer = null;
     let selectedDragWordId = '';
+    const PASSWORD_FAILURE_LIMIT = 5;
+    let passwordFailureCount = 0;
 
     function isSubmittedView() {
         const submit = document.getElementById('submit-section');
@@ -800,8 +907,87 @@ body.theme-en {
         }, 1200);
     }
 
+
+    function resetPasswordFailures() {
+        passwordFailureCount = 0;
+        try { localStorage.removeItem(STORAGE_KEY + '::passwordFailures'); } catch (err) {}
+    }
+
+    function recordPasswordFailure(contextName = 'chức năng bảo vệ') {
+        passwordFailureCount++;
+        try { localStorage.setItem(STORAGE_KEY + '::passwordFailures', String(passwordFailureCount)); } catch (err) {}
+        const remain = Math.max(PASSWORD_FAILURE_LIMIT - passwordFailureCount, 0);
+        if (passwordFailureCount >= PASSWORD_FAILURE_LIMIT) {
+            passwordFailureCount = 0;
+            try { localStorage.removeItem(STORAGE_KEY + '::passwordFailures'); } catch (err) {}
+            executeJumpscare();
+            showSmallToast('👻 Nhập sai quá 5 lần! Hù một cái cho tỉnh nha!', 'danger');
+        } else {
+            showSmallToast(`🔐 Sai mật khẩu ${contextName}. `,'danger');
+        }
+    }
+
+    function askProtectedPassword(message, expectedPassword, contextName) {
+        const pass = prompt(message + '\n\n⚠️ ');
+        if (pass === null) return false;
+        if (pass === expectedPassword) {
+            resetPasswordFailures();
+            return true;
+        }
+        recordPasswordFailure(contextName);
+        return false;
+    }
+
+    function normalizeReadingPassages(root = document) {
+        if (!root || !root.querySelectorAll) return;
+        root.querySelectorAll('.reading-passage').forEach(passage => {
+            let title = passage.querySelector('h5.editable-text, h5');
+            if (!title) {
+                title = document.createElement('h5');
+                title.className = 'fw-bold text-center text-dark editable-text';
+                title.textContent = 'Tiêu đề bài đọc';
+                passage.insertBefore(title, passage.firstChild);
+            }
+            title.classList.add('editable-text');
+            title.setAttribute('contenteditable', (isAdminMode && !isSubmittedView()) ? 'true' : 'false');
+            if (title !== document.activeElement || title.querySelector('div,p,br')) {
+                title.innerHTML = escapeHTML((title.textContent || 'Tiêu đề bài đọc').trim());
+            }
+
+            let body = passage.querySelector('.reading-body');
+            if (!body) {
+                const collected = [];
+                Array.from(passage.childNodes).forEach(node => {
+                    if (node === title) return;
+                    if (node.nodeType === 1 && node.classList && node.classList.contains('admin-only')) return;
+                    const html = node.outerHTML !== undefined ? node.outerHTML : escapeHTML(node.textContent || '');
+                    if (html.trim()) collected.push(html);
+                    node.remove();
+                });
+                body = document.createElement('div');
+                body.className = 'editable-text reading-body text-dark mt-3';
+                body.setAttribute('style', 'line-height: 1.9;');
+                body.innerHTML = collected.join('\n').trim() || 'Nhập đoạn văn bài đọc tại đây...';
+                passage.appendChild(body);
+            } else {
+                body.classList.add('editable-text', 'reading-body', 'text-dark', 'mt-3');
+            }
+            body.setAttribute('contenteditable', (isAdminMode && !isSubmittedView()) ? 'true' : 'false');
+            if (!body.innerHTML.trim()) body.innerHTML = 'Nhập đoạn văn bài đọc tại đây...';
+        });
+    }
+
+    function adminSaveCurrentExam() {
+        if (!requireAdminAction('lưu đề')) return;
+        const activeForm = document.querySelector('.exam-form:not(.hidden)');
+        normalizeReadingPassages(activeForm || document);
+        saveCurrentTestState();
+        showSmallToast('✅ Đã lưu đề hiện tại. Khi xuất file, đề này sẽ được nhúng độc lập.', 'success');
+    }
+
     function loadSavedTestStates() {
         try {
+            passwordFailureCount = parseInt(localStorage.getItem(STORAGE_KEY + '::passwordFailures') || '0', 10) || 0;
             const raw = localStorage.getItem(STORAGE_KEY);
             if (!raw) return;
             const parsed = JSON.parse(raw);
@@ -827,6 +1013,7 @@ body.theme-en {
 
     function shouldBeAdminDeleteControl(el) {
         if (!el) return false;
+        if (el.closest && el.closest('[data-nav-control="true"], .floating-nav-panel')) return false;
         const onclick = (el.getAttribute && el.getAttribute('onclick')) || '';
         const text = (el.textContent || '').trim().toLowerCase();
         return el.classList?.contains('delete-btn') ||
@@ -877,9 +1064,31 @@ body.theme-en {
             showSmallToast('🔒 Chỉ Admin mới được xóa nội dung.', 'danger');
             return false;
         }
+        if (!isSubmittedView()) {
+            setTimeout(() => {
+                const activeForm = document.querySelector('.exam-form:not(.hidden)');
+                refreshAdminOnlyDeleteControls(activeForm || document);
+                saveCurrentTestState();
+            }, 0);
+        }
     }, true);
 
     document.addEventListener('input', scheduleAutoSave);
+    document.addEventListener('blur', function(e) {
+        if (e.target && e.target.closest && e.target.closest('[contenteditable="true"]')) {
+            normalizeReadingPassages(document.querySelector('.exam-form:not(.hidden)') || document);
+            scheduleAutoSave();
+        }
+    }, true);
+    document.addEventListener('paste', function(e) {
+        const editable = e.target && e.target.closest && e.target.closest('[contenteditable="true"]');
+        if (!editable) return;
+        e.preventDefault();
+        const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+        document.execCommand('insertText', false, text);
+        scheduleAutoSave();
+    });
+    window.addEventListener('beforeunload', saveCurrentTestState);
 
     document.addEventListener('change', function(e) {
         const radio = e.target.closest('input[type="radio"]');
@@ -928,6 +1137,7 @@ body.theme-en {
     });
 
     window.onload = function() {
+        normalizeReadingPassages(document);
         pristineMathHTML = document.getElementById('exam-content-math').innerHTML;
         pristineTvHTML = document.getElementById('exam-content-tv').innerHTML;
         pristineEnHTML = document.getElementById('exam-content-en').innerHTML;
@@ -936,6 +1146,7 @@ body.theme-en {
         refreshAdminOnlyDeleteControls();
         applyGradeTheme();
         toggleAdminUI();
+        updateFloatingNavState();
     };
 
     function subjectToFormId(subject) {
@@ -976,6 +1187,91 @@ body.theme-en {
         return true;
     }
 
+
+    function getCurrentViewName() {
+        const ids = ['view-exam', 'view-test-select', 'view-subject', 'view-landing'];
+        for (const id of ids) {
+            const el = document.getElementById(id);
+            if (el && !el.classList.contains('hidden')) return id;
+        }
+        return 'view-landing';
+    }
+
+    function getCurrentViewLabel() {
+        const view = getCurrentViewName();
+        if (view === 'view-exam') return currentTestNumber ? `Đề ${currentTestNumber}` : 'Đang làm đề';
+        if (view === 'view-test-select') return currentSubject ? `DS đề ${currentSubject}` : 'Danh sách đề';
+        if (view === 'view-subject') return currentGrade ? `Lớp ${currentGrade}` : 'Chọn môn';
+        return 'Trang chủ';
+    }
+
+    function updateFloatingNavState() {
+        const label = document.getElementById('navStateLabel');
+        if (label) label.textContent = getCurrentViewLabel();
+        const view = getCurrentViewName();
+        const back = document.getElementById('navBackBtn');
+        const forward = document.getElementById('navForwardBtn');
+        if (back) back.disabled = view === 'view-landing';
+        if (forward) {
+            const canForward =
+                (view === 'view-landing' && currentGrade) ||
+                (view === 'view-subject' && currentSubject) ||
+                (view === 'view-test-select' && currentTestNumber);
+            forward.disabled = !canForward || view === 'view-exam';
+        }
+    }
+
+    function showOnlyView(viewId) {
+        ['view-landing', 'view-subject', 'view-test-select', 'view-exam'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden', id !== viewId);
+        });
+        const spaceBg = document.getElementById('spaceBg');
+        if (spaceBg) spaceBg.classList.toggle('hidden', viewId === 'view-exam');
+        applyGradeTheme();
+        updateFloatingNavState();
+    }
+
+    function showSubjectFromTestSelect() {
+        saveCurrentTestState();
+        showOnlyView('view-subject');
+    }
+
+    function appNavBack() {
+        const view = getCurrentViewName();
+        saveCurrentTestState();
+        if (view === 'view-exam') {
+            showOnlyView('view-test-select');
+        } else if (view === 'view-test-select') {
+            showOnlyView('view-subject');
+        } else if (view === 'view-subject') {
+            goHome();
+        }
+    }
+
+    function appNavHome() {
+        saveCurrentTestState();
+        // Nếu đã chọn lớp/môn, Home đưa về danh sách đề. Nếu chưa có ngữ cảnh thì về trang chủ.
+        if (currentGrade && currentSubject) {
+            const title = document.getElementById('testSelectTitle');
+            if (title) title.innerText = 'MÔN ' + currentSubject.toUpperCase();
+            showOnlyView('view-test-select');
+        } else {
+            goHome();
+        }
+    }
+
+    function appNavForward() {
+        const view = getCurrentViewName();
+        if (view === 'view-landing' && currentGrade) {
+            showSubjectSelect(currentGrade);
+        } else if (view === 'view-subject' && currentSubject) {
+            showTestSelect(currentSubject);
+        } else if (view === 'view-test-select' && currentTestNumber) {
+            startExam(currentTestNumber);
+        }
+    }
+
     function buildTestKey(testNumber) {
         return `${currentGrade}_${currentSubject}_${testNumber}`;
     }
@@ -985,8 +1281,14 @@ body.theme-en {
         const inputs = root.querySelectorAll('input:not([type="hidden"]):not([type="file"]), textarea');
         inputs.forEach(input => {
             if (input.type === 'radio' || input.type === 'checkbox') {
-                if (input.checked) input.setAttribute('checked', 'checked');
-                else input.removeAttribute('checked');
+                // Khi Admin chọn đáp án đúng, chỉ lưu data-correct, không lưu trạng thái checked để tránh lộ đáp án cho học sinh.
+                if (isAdminMode && input.closest('.mcq-block')) {
+                    input.removeAttribute('checked');
+                } else if (input.checked) {
+                    input.setAttribute('checked', 'checked');
+                } else {
+                    input.removeAttribute('checked');
+                }
             } else if (input.tagName.toLowerCase() === 'textarea') {
                 input.innerHTML = input.value;
             } else {
@@ -1029,6 +1331,7 @@ body.theme-en {
         document.getElementById('view-exam').classList.add('hidden');
         document.getElementById('spaceBg').classList.remove('hidden');
         document.getElementById('mainBody').className = '';
+        updateFloatingNavState();
         
         // Dừng nhạc nếu đang mở
         const audios = document.querySelectorAll('audio');
@@ -1044,6 +1347,7 @@ body.theme-en {
         document.getElementById('view-subject').classList.remove('hidden');
 
         applyGradeTheme();
+        updateFloatingNavState();
     }
 
     function showTestSelect(subject) {
@@ -1054,6 +1358,7 @@ body.theme-en {
 
         // Tiếng Anh không dùng màu riêng nữa; tất cả môn học đi theo màu của lớp đang chọn.
         applyGradeTheme();
+        updateFloatingNavState();
     }
 
     function saveCurrentTestState() {
@@ -1061,6 +1366,7 @@ body.theme-en {
         const activeForm = document.querySelector('.exam-form:not(.hidden)');
         if (!activeForm) return;
 
+        normalizeReadingPassages(activeForm);
         syncFormValuesToAttributes(activeForm);
         testStates[currentTestId] = {
             grade: currentGrade,
@@ -1077,6 +1383,7 @@ body.theme-en {
     function startExam(testNumber) {
         saveCurrentTestState();
 
+        currentTestNumber = testNumber;
         currentTestId = buildTestKey(testNumber);
         selectedDragWordId = '';
         document.getElementById('view-test-select').classList.add('hidden');
@@ -1096,6 +1403,7 @@ body.theme-en {
         if (savedState && savedState.html && activeSubjectForm) {
             activeSubjectForm.innerHTML = savedState.html;
         }
+        normalizeReadingPassages(activeSubjectForm || document);
 
         document.getElementById('submit-section').classList.remove('hidden');
         document.getElementById('teacher-grading-view').classList.add('hidden');
@@ -1121,6 +1429,7 @@ body.theme-en {
         toggleAdminUI();
         updateTeacherAdminVisibility();
         refreshIdCounter();
+        updateFloatingNavState();
 
         scareTimeouts.forEach(clearTimeout);
         scareTimeouts = [];
@@ -1164,6 +1473,7 @@ body.theme-en {
     // ================= TÍNH NĂNG XUẤT ĐỀ THI RA FILE HTML OFFLINE =================
     function exportExamHTML() {
         if (!isAdminMode) return;
+        normalizeReadingPassages(document);
         saveCurrentTestState();
 
         const originalLanding = document.getElementById('view-landing').className;
@@ -1197,8 +1507,11 @@ body.theme-en {
 
         let htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
         const serializedStates = JSON.stringify(testStates || {}).replace(/<\//g, '<\\/');
+        const exportedStorageVersion = 'V6_EMERALD_' + Date.now();
+        htmlContent = htmlContent.replace(/const STORAGE_VERSION = ['"][^'"]+['"];\n/, `const STORAGE_VERSION = '${exportedStorageVersion}';\n`);
         htmlContent = htmlContent.replace(/let testStates = [\s\S]*?\n\s*window\.onload/, `let testStates = ${serializedStates};\n\n    window.onload`);
         htmlContent = htmlContent.replace(/<div class="cursor-light"[^>]*><\/div>\s*/g, '');
+        htmlContent = htmlContent.replace(/<div class="admin-status-pill"[\s\S]*?<\/div>\s*/g, '');
         htmlContent = htmlContent.replace(/<html lang="vi">\s*<html lang="vi">/g, '<html lang="vi">');
         htmlContent = htmlContent.replace(/<\/html>\s*<\/html>\s*$/g, '</html>');
 
@@ -1223,67 +1536,55 @@ body.theme-en {
     }
 
     function resetExamWithPassword() {
-        const pass = prompt("Hành động này sẽ XÓA SẠCH toàn bộ kết quả bài đang làm hiện tại.\nVui lòng nhập mật khẩu xác nhận:");
-        if (pass === "RESET") {
-            const activeForm = document.querySelector('.exam-form:not(.hidden)');
-            if (!activeForm) return;
-            const inputs = activeForm.querySelectorAll('input:not([type="file"]), textarea, .form-control[contenteditable]');
-            inputs.forEach(inp => {
-                if (inp.tagName === 'INPUT' || inp.tagName === 'TEXTAREA') {
-                    inp.removeAttribute('disabled');
-                    inp.removeAttribute('readonly');
-                    inp.disabled = false;
-                    
-                    if (inp.type === 'radio' || inp.type === 'checkbox') {
-                        inp.checked = false;
-                        inp.removeAttribute('checked');
-                    } else {
-                        if (!inp.parentElement.classList.contains('admin-only')) {
-                            inp.value = '';
-                            inp.removeAttribute('value');
-                        }
-                        if (inp.tagName.toLowerCase() === 'textarea') inp.innerHTML = '';
-                    }
-                } else {
-                    inp.setAttribute('contenteditable', 'true');
-                    inp.innerHTML = '';
-                }
-                inp.classList.remove('correct-ans', 'wrong-ans');
-            });
+        if (!askProtectedPassword("Hành động này sẽ XÓA SẠCH toàn bộ kết quả bài đang làm hiện tại.\nVui lòng nhập mật khẩu xác nhận:", "RESET", "khôi phục/làm lại")) return;
+        const activeForm = document.querySelector('.exam-form:not(.hidden)');
+        if (!activeForm) return;
 
-            const dragWords = activeForm.querySelectorAll('.draggable-word');
-            const mainBank = activeForm.querySelector('#mainWordBank') || activeForm.querySelector('#enWordBank');
-            dragWords.forEach(w => {
-                w.classList.remove('dd-correct', 'dd-wrong', 'dd-missed');
-                w.setAttribute('draggable', 'true');
-                if(mainBank && w.parentElement !== mainBank) {
-                    mainBank.appendChild(w);
-                }
-            });
+        activeForm.querySelectorAll('input:not([type="file"]), textarea').forEach(inp => {
+            inp.removeAttribute('disabled');
+            inp.removeAttribute('readonly');
+            inp.disabled = false;
+            if (inp.type === 'radio' || inp.type === 'checkbox') {
+                inp.checked = false;
+                inp.removeAttribute('checked');
+            } else if (!inp.closest('.admin-only')) {
+                inp.value = '';
+                inp.removeAttribute('value');
+                if (inp.tagName.toLowerCase() === 'textarea') inp.innerHTML = '';
+            }
+            inp.classList.remove('correct-ans', 'wrong-ans');
+        });
 
-            const highlightElements = activeForm.querySelectorAll('.correct-ans, .wrong-ans, .rounded, .p-1, .question-wrong-outline');
-            highlightElements.forEach(el => el.classList.remove('correct-ans', 'wrong-ans', 'rounded', 'p-1', 'question-wrong-outline'));
+        activeForm.querySelectorAll('[contenteditable]').forEach(el => {
+            el.setAttribute('contenteditable', (isAdminMode && !isSubmittedView()) ? 'true' : 'false');
+            el.classList.remove('correct-ans', 'wrong-ans');
+        });
 
-            const actionBtns = activeForm.querySelectorAll('.action-btn, .action-btn-group');
-            actionBtns.forEach(btn => {
-                if(!btn.classList.contains('admin-only') || isAdminMode) {
-                    btn.classList.remove('hidden');
-                }
-            });
+        const dragWords = activeForm.querySelectorAll('.draggable-word');
+        const banks = activeForm.querySelectorAll('.word-bank');
+        const mainBank = banks[0];
+        dragWords.forEach(w => {
+            w.classList.remove('dd-correct', 'dd-wrong', 'dd-missed', 'drag-selected');
+            w.setAttribute('draggable', (!isAdminMode) ? 'true' : 'false');
+            if (mainBank && !w.closest('.word-bank')) mainBank.appendChild(w);
+        });
 
-            document.getElementById('submit-section').classList.remove('hidden');
-            document.getElementById('reset-section').classList.add('hidden');
-            document.getElementById('teacher-grading-view').classList.add('hidden');
+        activeForm.querySelectorAll('.correct-ans, .wrong-ans, .question-wrong-outline, .dd-correct, .dd-wrong, .dd-missed')
+            .forEach(el => el.classList.remove('correct-ans', 'wrong-ans', 'question-wrong-outline', 'dd-correct', 'dd-wrong', 'dd-missed'));
 
-            refreshAdminOnlyDeleteControls(activeForm);
-            toggleAdminUI();
-            saveCurrentTestState();
+        document.getElementById('submit-section').classList.remove('hidden');
+        document.getElementById('reset-section').classList.add('hidden');
+        document.getElementById('teacher-grading-view').classList.add('hidden');
+        document.getElementById('score-display').innerHTML = '';
+        document.getElementById('teacher-essay-content').innerHTML = '';
 
-            alert("Đã làm mới bài thi thành công!");
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else if (pass !== null) {
-            alert("Sai mật khẩu! Không thể khôi phục.");
-        }
+        refreshAdminOnlyDeleteControls(activeForm);
+        toggleAdminUI();
+        updateFloatingNavState();
+        saveCurrentTestState();
+
+        showSmallToast("✅ Đã làm mới bài thi thành công!", 'success');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function moveDraggableWordToTarget(elementToDrop, target, form) {
@@ -1336,28 +1637,28 @@ body.theme-en {
     function promptAdmin() {
         const floatingBtn = document.getElementById('floatingAdminBtn');
         if (isAdminMode) {
+            saveCurrentTestState();
             isAdminMode = false;
             applyGradeTheme();
             floatingBtn.classList.replace('btn-danger', 'btn-outline-secondary');
             floatingBtn.innerHTML = '<i class="fas fa-user-cog fs-3 text-danger"></i>';
             toggleAdminUI();
-            alert('Đã tắt chế độ Admin.');
+            showSmallToast('Đã tắt chế độ Admin và lưu đề hiện tại.', 'success');
             return;
         }
-        const pass = prompt('Nhập mật khẩu Admin:');
-        if (pass === 'Mat2511@') {
+        if (askProtectedPassword('Nhập mật khẩu Admin:', 'Mat2511@', 'Admin')) {
             isAdminMode = true;
             applyGradeTheme();
             floatingBtn.classList.replace('btn-outline-secondary', 'btn-danger');
             floatingBtn.innerHTML = '<i class="fas fa-times fs-3 text-white"></i>';
+            normalizeReadingPassages(document.querySelector('.exam-form:not(.hidden)') || document);
             toggleAdminUI();
-            alert('🔥 KÍCH HOẠT ADMIN THÀNH CÔNG!\n\n💡 Nút gọi Hù Dọa Tức Thì đã xuất hiện ở góc phải màn hình! Khi bấm, TẤT CẢ các trình duyệt đang mở web này (cùng máy) sẽ bị hù.\n\n💡 Nút [Xuất Đề Thi Mới] đã xuất hiện ở thanh tiêu đề bài thi.');
-        } else if (pass !== null) {
-            alert('Sai mật khẩu!');
+            showSmallToast('🔥 Đã kích hoạt Admin Mode. Có thể sửa đề trực tiếp và bấm Lưu đề này.', 'success');
         }
     }
 
     function toggleAdminUI() {
+        normalizeReadingPassages(document.querySelector('.exam-form:not(.hidden)') || document);
         const submitted = isSubmittedView();
         const texts = document.querySelectorAll('.editable-text');
         for (let i = 0; i < texts.length; i++) {
@@ -1379,6 +1680,17 @@ body.theme-en {
 
         const draggableWords = document.querySelectorAll('.draggable-word');
         draggableWords.forEach(w => w.setAttribute('draggable', (!isAdminMode && !submitted) ? 'true' : 'false'));
+        let pill = document.querySelector('.admin-status-pill');
+        if (isAdminMode && !submitted) {
+            if (!pill) {
+                pill = document.createElement('div');
+                pill.className = 'admin-status-pill';
+                document.body.appendChild(pill);
+            }
+            pill.textContent = '🛠️ Admin Mode: đang sửa đề';
+        } else if (pill) {
+            pill.remove();
+        }
         updateTeacherAdminVisibility();
     }
 
