@@ -515,11 +515,85 @@ textarea{
   pointer-events:none;
   overflow:hidden;
 }
-.scare-overlay.active{display:flex;pointer-events:auto;background:radial-gradient(circle at 50% 45%,rgba(251,113,133,.94),rgba(88,28,135,.90) 62%,rgba(15,23,42,.96))}
-.scare-face{font-size:clamp(6rem,20vw,18rem);filter:drop-shadow(0 0 34px #fff7ad);animation:scarePop .35s cubic-bezier(.2,1.5,.4,1) forwards,scareShake .12s infinite .35s}
-.scare-text{max-width:min(900px,94vw);margin-top:14px;padding:12px 22px;border-radius:24px;background:rgba(255,255,255,.86);color:#9f1239;font-size:clamp(1.25rem,4vw,3rem);font-weight:1000;box-shadow:0 18px 38px rgba(0,0,0,.18)}
-@keyframes scarePop{from{transform:scale(.1) translateY(50vh);opacity:0}to{transform:scale(1);opacity:1}}
-@keyframes scareShake{50%{transform:translate(7px,-6px) rotate(3deg) scale(1.05)}}
+.scare-overlay.active{
+  display:flex;
+  pointer-events:auto;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(255,255,255,.18), transparent 10%),
+    radial-gradient(circle at 50% 50%, rgba(239,68,68,.94), rgba(88,28,135,.92) 43%, rgba(0,0,0,.98) 75%);
+  animation:scareScreenPulse .08s infinite alternate, scareTwist 1.05s infinite linear;
+}
+.scare-overlay.active::before,
+.scare-overlay.active::after{
+  content:"";
+  position:absolute;
+  inset:-32vmax;
+  pointer-events:none;
+  background:
+    repeating-conic-gradient(from 0deg, rgba(255,255,255,.18) 0deg 8deg, transparent 8deg 18deg),
+    radial-gradient(circle, transparent 0 18%, rgba(0,0,0,.35) 19% 21%, transparent 22% 100%);
+  mix-blend-mode:screen;
+  animation:spiralSpin 1.15s linear infinite;
+}
+.scare-overlay.active::after{
+  inset:-24vmax;
+  opacity:.56;
+  filter:blur(1px) contrast(1.45);
+  animation:spiralSpinReverse .78s linear infinite;
+}
+.scare-overlay.password.active{
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255,255,255,.18), transparent 9%),
+    radial-gradient(circle at 50% 50%, rgba(127,29,29,.98), rgba(88,28,135,.96) 42%, #000 76%);
+}
+.scare-overlay.focus.active{
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255,255,255,.15), transparent 11%),
+    radial-gradient(circle at 50% 50%, rgba(14,165,233,.80), rgba(88,28,135,.92) 52%, rgba(2,6,23,.96) 78%);
+}
+.scare-spiral{
+  position:absolute;
+  width:72vmax;
+  height:72vmax;
+  border-radius:50%;
+  border:clamp(14px,2.3vw,34px) dashed rgba(255,255,255,.34);
+  box-shadow:0 0 46px rgba(250,204,21,.52), inset 0 0 52px rgba(239,68,68,.42);
+  animation:spiralZoom .9s linear infinite;
+  opacity:.72;
+}
+.scare-spiral.s2{width:52vmax;height:52vmax;animation-duration:.62s;animation-direction:reverse;opacity:.58}
+.scare-spiral.s3{width:34vmax;height:34vmax;animation-duration:.42s;opacity:.78;border-style:solid}
+.scare-face{
+  position:relative;
+  z-index:3;
+  font-size:clamp(7rem,22vw,22rem);
+  filter:drop-shadow(0 0 30px #ff0000) drop-shadow(0 0 74px #facc15);
+  animation:scarePop .32s cubic-bezier(.12,1.7,.28,1) forwards, scareShake .06s infinite .32s;
+}
+.scare-text{
+  position:relative;
+  z-index:3;
+  max-width:min(920px,94vw);
+  margin-top:14px;
+  padding:14px 24px;
+  border-radius:28px;
+  background:rgba(0,0,0,.54);
+  color:#fff;
+  border:2px solid rgba(255,255,255,.24);
+  font-size:clamp(1.3rem,4.5vw,3.6rem);
+  font-weight:1000;
+  text-shadow:4px 4px 0 #000,0 0 24px #facc15,0 0 46px #ef4444;
+  box-shadow:0 18px 48px rgba(0,0,0,.38);
+  animation:scareTextGlitch .16s infinite steps(2);
+}
+@keyframes scarePop{0%{transform:scale(.05) rotate(-24deg) translateY(58vh);opacity:0}60%{transform:scale(1.28) rotate(10deg) translateY(-5vh);opacity:1}100%{transform:scale(1.03) rotate(0deg) translateY(0);opacity:1}}
+@keyframes scareShake{0%,100%{transform:translate(0,0) rotate(0) scale(1.05)}25%{transform:translate(18px,-15px) rotate(5deg) scale(1.13)}50%{transform:translate(-20px,13px) rotate(-6deg) scale(1.18)}75%{transform:translate(14px,17px) rotate(7deg) scale(1.11)}}
+@keyframes scareScreenPulse{from{filter:brightness(.82) contrast(1.25) saturate(1.4)}to{filter:brightness(1.25) contrast(1.65) saturate(2)}}
+@keyframes scareTwist{0%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.018) rotate(.65deg)}100%{transform:scale(1) rotate(0deg)}}
+@keyframes spiralSpin{to{transform:rotate(360deg) scale(1.04)}}
+@keyframes spiralSpinReverse{to{transform:rotate(-360deg) scale(1.08)}}
+@keyframes spiralZoom{0%{transform:scale(.45) rotate(0deg);opacity:.1}45%{opacity:.92}100%{transform:scale(1.55) rotate(360deg);opacity:0}}
+@keyframes scareTextGlitch{0%{transform:skewX(0) translate(0,0)}25%{transform:skewX(5deg) translate(6px,-2px)}50%{transform:skewX(-5deg) translate(-6px,3px)}75%{transform:skewX(2deg) translate(2px,4px)}100%{transform:skewX(0) translate(0,0)}}
 .firework-overlay.active{display:block;background:rgba(255,251,235,.12)}
 .firework-message{
   position:absolute;
@@ -793,6 +867,12 @@ let scareTimers = [];
 let scareActive = false;
 let lastSecurityToastTimer = null;
 const SAVE_VERSION = 'vietnamese-practice-v1';
+const EXAM_PASSWORDS = {
+  4: {1:'vdd9', 2:'vddk', 3:'vddon', 4:'vddf', 5:'vdd1', 6:'vddlk'},
+  5: {1:'vbn8', 2:'vbnh', 3:'vbne', 4:'vbn5', 5:'vbna', 6:'vbn0'}
+};
+const PASSWORD_MAX_WRONG = 3;
+const passwordAttempts = {};
 
 function $(id){ return document.getElementById(id); }
 function escapeHTML(value){
@@ -873,7 +953,31 @@ function showTestList(){
   if(currentGrade) renderTestButtons();
   showView('tests');
 }
+function getPasswordKey(grade, testNumber){
+  return `grade${grade}-test${testNumber}`;
+}
+function verifyExamPassword(testNumber){
+  const expected = EXAM_PASSWORDS[currentGrade] && EXAM_PASSWORDS[currentGrade][testNumber];
+  if(!expected) return true;
+  const key = getPasswordKey(currentGrade, testNumber);
+  const input = prompt(`Nhập mã đề để mở ĐỀ ${testNumber} - Lớp ${currentGrade}:`);
+  if(input === null) return false;
+  if(String(input).trim() === expected){
+    passwordAttempts[key] = 0;
+    return true;
+  }
+  passwordAttempts[key] = (passwordAttempts[key] || 0) + 1;
+  const remaining = Math.max(0, PASSWORD_MAX_WRONG - passwordAttempts[key]);
+  if(passwordAttempts[key] >= PASSWORD_MAX_WRONG){
+    passwordAttempts[key] = 0;
+    triggerPasswordScare(`SAI MÃ 3 LẦN!\nTẬP TRUNG LẠI NÀO!`, '👹');
+  }else{
+    showSecurityToast(`🔐 Sai mã đề.`);
+  }
+  return false;
+}
 function startExam(testNumber){
+  if(!verifyExamPassword(testNumber)) return;
   currentTest = testNumber;
   currentExam = DATA.find(x => x.grade === currentGrade && x.test === testNumber);
   if(!currentExam) return;
@@ -1165,17 +1269,32 @@ function clearExamTimers(){
   scareTimers.forEach(id => clearTimeout(id));
   scareTimers = [];
 }
-function triggerFocusReminder(reasonText = 'TẬP TRUNG ĐỌC BÀI NÀO!', emoji = '📖'){
+function triggerScareOverlay(reasonText = 'TẬP TRUNG ĐỌC BÀI NÀO!', emoji = '📖', duration = 1700, mode = 'focus'){
   const overlay = $('scareOverlay');
   if(!overlay || scareActive) return;
   scareActive = true;
   $('scareFace').textContent = emoji;
-  $('scareText').textContent = reasonText;
+  $('scareText').innerHTML = escapeHTML(reasonText).replace(/\n/g, '<br>');
+  overlay.classList.remove('focus','password');
+  overlay.classList.add(mode);
+  overlay.querySelectorAll('.scare-spiral').forEach(el => el.remove());
+  ['s1','s2','s3'].forEach(cls => {
+    const spiral = document.createElement('span');
+    spiral.className = `scare-spiral ${cls}`;
+    overlay.insertBefore(spiral, overlay.firstChild);
+  });
   overlay.classList.add('active');
   setTimeout(()=>{
-    overlay.classList.remove('active');
+    overlay.classList.remove('active','focus','password');
+    overlay.querySelectorAll('.scare-spiral').forEach(el => el.remove());
     scareActive = false;
-  }, 1700);
+  }, duration);
+}
+function triggerFocusReminder(reasonText = 'TẬP TRUNG ĐỌC BÀI NÀO!', emoji = '📖'){
+  triggerScareOverlay(reasonText, emoji, 1700, 'focus');
+}
+function triggerPasswordScare(reasonText = 'SAI MÃ 3 LẦN!', emoji = '👹'){
+  triggerScareOverlay(reasonText, emoji, 5000, 'password');
 }
 function startExamTimers(){
   clearExamTimers();
